@@ -278,6 +278,9 @@ void MorseBinNET2EM::sendByte(String input,int sendpin){
 				}      	
 			}   
     }
+	if(buf.indexOf("n")>0){
+		return "errGrabledMessage";
+	}
     return buf;
   }
 void MorseBinNET2EM::setAddress(String addressToSet){
@@ -307,6 +310,7 @@ void MorseBinNET2EM::getAddress(){
 		Serial.println("GotNoNewAddress");
 		while(1);
 	} else if(gotResponse == false && secondRun == false){
+		secondRun = true;
 		goto getAddressMarker;
 	}
 	setAddress(lastMessage[3]);
