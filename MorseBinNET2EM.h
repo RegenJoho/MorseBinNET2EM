@@ -9,8 +9,12 @@
 			void send(String address,String busID, String data1, String data2, String data3, String data4, String data5, String data6, String data7, String data8);
 			void receive();
 			String placeRequest(String address, String data1, String data2);
-			String lastMessage[11];
+			String lastMessage[8];
+			String lastSender;
+			String lastError;
+			String lastPort;
 			void begin();
+			void begin(String prefAddress);
 			void update();
 		private:
 			String _address;
@@ -19,7 +23,7 @@
 			String receiveByte(int resPin);
 			void setAddress(String addressToSet);
 			void ackknowledge();
-			void getAddress();
+			void getAddress(String preferredAddress);
 			int _pinTransmit;
 			int _pinReceive;
 			void Send0(int sendpin);
@@ -29,5 +33,7 @@
 			int timeMiddle = 0;
 			int timeForStart = 0;
 			unsigned long timeStamp = 0;
+			unsigned long leaseMax = 300000;
+			unsigned long leaseUpdate = 270000;
 	};
 #endif

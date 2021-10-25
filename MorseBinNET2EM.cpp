@@ -45,145 +45,145 @@ void MorseBinNET2EM::send(String address,String busID, String data1, String data
 void MorseBinNET2EM::receive(){
 	String receiverAddress = receiveByte(_pinTransmit);
 	if((receiverAddress == "errTimeout")){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(receiverAddress == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String senderAddress = receiveByte(_pinTransmit);
 	if(senderAddress == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(senderAddress == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String senderBusID = receiveByte(_pinTransmit);
 	if(senderBusID == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(senderBusID == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String data1 = receiveByte(_pinTransmit);
 	if(data1 == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(data1 == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String data2 = receiveByte(_pinTransmit);
 	if(data2 == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(data2 == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String data3 = receiveByte(_pinTransmit);
 	if(data3 == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(data3 == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String data4 = receiveByte(_pinTransmit);
 	if(data4 == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(data4 == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String data5 = receiveByte(_pinTransmit);
 	if(data5 == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(data5 == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String data6 = receiveByte(_pinTransmit);
 	if(data6 == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(data6 == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String data7 = receiveByte(_pinTransmit);
 	if(data7 == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(data7 == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	String data8 = receiveByte(_pinTransmit);
 	if(data8 == "errTimeout"){
-		lastMessage[0] = "errTimeout";
+		lastError = "errTimeout";
 		return;
 	} else {
 		if(data8 == "errGrabledMessage"){
-			lastMessage[0] = "errGrabledMessage";
+			lastError = "errGrabledMessage";
 			return;
 		}
 	}
-	//Serial.println(lastMessage[0]);
+	//Serial.println(lastError);
 	if(_address != receiverAddress){
-		lastMessage[0] = "errWrongAddress";
+		lastError = "errWrongAddress";
 		//Serial.println(_address + ":" + receiverAddress);
 		return;
 	}
 	if(senderBusID == "00000000"){
-		lastMessage[2] = "local";
+		lastPort = "local";
 	} else{
-		lastMessage[2] = senderBusID;
+		lastPort = senderBusID;
 	}
-	lastMessage[1] = senderAddress;
-	lastMessage[3] = data1;
-	lastMessage[4] = data2;
-	lastMessage[5] = data3;
-	lastMessage[6] = data4;
-	lastMessage[7] = data5;
-	lastMessage[8] = data6;
-	lastMessage[9] = data7;
-	lastMessage[10] = data8;
-	lastMessage[0] = "errSuccess";
+	lastSender = senderAddress;
+	lastMessage[0] = data1;
+	lastMessage[1] = data2;
+	lastMessage[2] = data3;
+	lastMessage[3] = data4;
+	lastMessage[4] = data5;
+	lastMessage[5] = data6;
+	lastMessage[6] = data7;
+	lastMessage[7] = data8;
+	lastError = "errSuccess";
 }
 String MorseBinNET2EM::placeRequest(String address, String data1, String data2) {
 	return "errNotImplemented";
@@ -287,19 +287,19 @@ void MorseBinNET2EM::setAddress(String addressToSet){
 	_address = addressToSet;
 }
 void MorseBinNET2EM::ackknowledge(){
-	send(lastMessage[1], "00000000", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111");
+	send(lastSender, "00000000", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111");
 }
-void MorseBinNET2EM::getAddress(){
+void MorseBinNET2EM::getAddress(String preferredAddress){
 	Serial.println("Starting to get Address");
 	setAddress("00000000");
 	boolean secondRun = false;
 	getAddressMarker:
 	boolean gotResponse = false;
 	unsigned long timeout = millis();
-	send(_gateWay, "00000001", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111");
+	send(_gateWay, "00000001", preferredAddress, "11111111", "11111111", "11111111", "11111111", "11111111", "11111111");
 	while(gotResponse == false) {
 		receive();
-		if(lastMessage[0] == "errSuccess" && lastMessage[1] == _gateWay){
+		if(lastError == "errSuccess" && lastSender == _gateWay){
 			Serial.println("GotAddress!");
 			gotResponse = true;
 			break;
@@ -313,13 +313,13 @@ void MorseBinNET2EM::getAddress(){
 		secondRun = true;
 		goto getAddressMarker;
 	}
-	setAddress(lastMessage[3]);
-	Serial.println(lastMessage[3]);
+	setAddress(lastMessage[0]);
+	Serial.println(lastMessage[0]);
 	timeStamp = millis();
 	Serial.println("New Address: " + _address);
 }
 void MorseBinNET2EM::update(){
-	if((millis() - timeStamp < 60000) && millis() - timeStamp > 50000){
+	if((millis() - timeStamp < leaseMax) && millis() - timeStamp > leaseUpdate){
 		Serial.println("Updated Address!");
 		Serial.println("CurrentAddress: " + _address);
 		boolean gotResponse = false;
@@ -332,15 +332,18 @@ void MorseBinNET2EM::update(){
 				update();
 				break;
 			}
-			if(lastMessage[0] == "errSuccess" && lastMessage[1] == _gateWay && lastMessage[3] == "00000000"){
+			if(lastError == "errSuccess" && lastSender == _gateWay && lastMessage[0] == "00000000"){
 				timeStamp = millis();
 				break;
 			}
 		}
-	} else if((millis() - timeStamp > 60000)){
-		getAddress();
+	} else if((millis() - timeStamp > leaseMax)){
+		getAddress("00000000");
 	}
 }
 void MorseBinNET2EM::begin(){
-	getAddress();
+	getAddress("00000000");
+}
+void MorseBinNET2EM::begin(String prefAddress){
+	getAddress(prefAddress);
 }
